@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React, { createContext, useState } from 'react';
+import './App.css';
+import Card from './component/Card';
+import Menu from './component/MenuAPI';
+import Nav from './component/Nav';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
+//Creating Array of Items from Array of Objects
+const CategoryList = Menu.map((CurrentElement) => CurrentElement.category)
+//Unique List Making
+const UniqueList = [... new Set(CategoryList)]
+
+
+const App=()=> {
+  const [Menudata, SetMenuData] = useState(Menu);
+  const [UniueCategory, SetUniqueCategory]=useState(UniqueList);
+
+  const FilterMenu = (SelectedCategory) => {
+    const FilterList = Menu.filter((CurrentElement) => { return (CurrentElement.category === SelectedCategory); })
+    //console.log(FilterList);
+    console.log("heelo")
+    SetMenuData(FilterList);
+  
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+     <Nav FilterMenu={FilterMenu} UniueCategory={UniueCategory} SetMenuData={SetMenuData} />
+
+
+      <div className='CardContainer'>
+        <Card Menudata={Menudata} />
+      </div>
+
+
+    </>
   );
 }
 
