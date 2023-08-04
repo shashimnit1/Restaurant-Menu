@@ -1,4 +1,4 @@
-import React,  from "react";
+import React  from "react";
 //import Images from "../images";
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
