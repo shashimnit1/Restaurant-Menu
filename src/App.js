@@ -1,5 +1,5 @@
 
-import React, { createContext, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Card from './component/Card';
 import Menu from './component/MenuAPI';
@@ -9,7 +9,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //Creating Array of Items from Array of Objects
 const CategoryList = Menu.map((CurrentElement) => CurrentElement.category)
 //Unique List Making
-const UniqueList = [... new Set(CategoryList)]
+const UniqueList = [...new Set(CategoryList)]
 
 
 const App=()=> {
